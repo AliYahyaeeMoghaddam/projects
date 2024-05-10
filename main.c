@@ -1,38 +1,46 @@
-#include<stdio.h>
-#include<string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-insertionSort(char name[][50], int length);
+int main(){
 
-main(){
+   int x,y;
 
-   const int length=10;
-   int i,j;
-   char name[length][50];
+   srand(time(0));
+   y=rand()%1000;
 
-   for(i=0;i<length;i++){
-      scanf("%s",name[i]);
+
+   printf("I have a number between 1 and 1000.\n Can you guess my number?\n Please type your first guess.\n");
+
+   for(int i=1;i<=10;i++){
+      scanf("%d", &x);
+
+      if(x==y)
+        printf("Excellent! You gussed the number!\n would you like to play again (y or no)?");
+      else if(x<y)
+        printf("Too low. Try again.\n");
+        else
+            printf("Too high, Try again.\n");
+
+        if(x==y)
+            printf("Either you know the secret or you are lucky!");
+        else
+            printf("You should be able to do better!");
+
+
    }
+     if(x!=y){
+    for(int i=1;i<=10;i++){
+      scanf("%d", &x);
 
-   insertionSort(name,length);
-
-   for(i=0;i<length;i++){
-      printf("%s\n",name[i]);
-   }
+      if(x==y)
+        printf("Excellent! You gussed the number!\n would you like to play again (y or no)?");
+      else{
+        if(x<y)
+        printf("Too low. Try again.");
+        else
+            printf("Too high, Try again.");
+        }
+    }
 }
-
-insertionSort(char name[][50], int length){
-
-    char s[50];
-
-    for(int i=0;i<length;i++){
-        for(int j=i+1;j<length;j++){
-            if(strcmp(name[i],name[j])>0){
-                strcpy(s,name[i]);
-                strcpy(name[i],name[j]);
-                strcpy(name[j],s);
-         }
-      }
-   }
-
 }
-
